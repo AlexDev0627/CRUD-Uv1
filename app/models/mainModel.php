@@ -49,4 +49,40 @@
             }
         }
 
+        protected function guardarDatos($tabla, $datos){
+            $query="INSERT INTO $tabla (";
+
+            $C =0;
+            foreach($datos as $clave){
+                if($C>=1){ $query .= ",";}
+                $query.=$clave["campo_nombre"];
+                $C++;
+            }
+            $query.=") VALUES(";            
+            $C =0;
+            foreach($datos as $clave){
+                if($C>=1){ $query .= ",";}
+                $query.=$clave["campo_marcador"];
+                $C++;
+            }
+            $query.=")";
+            $sql=$this->conectar()->prepare($query);            
+
+            foreach($datos as $clave){
+                $sql->bindParam($clave["campo_marcador"],$clave["campo_valor"]);
+
+            }
+            $sql->execute();
+            return $sql;
+        }
+
+        public function seleccionarDatos($tipo,$tabla,$campo,$id){
+            $tipo=$this->limpiarCadena($tipo);
+            $tipo=$this->limpiarCadena($tabla);
+            $tipo=$this->limpiarCadena($campo);
+            $tipo=$this->limpiarCadena($id);
+
+
+        }
+
     }
