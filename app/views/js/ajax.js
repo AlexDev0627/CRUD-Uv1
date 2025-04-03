@@ -4,7 +4,6 @@ formularios_ajax.forEach(formularios => {
     
     formularios.addEventListener("submit",function(e){
         e.preventDefault();
-
         Swal.fire({
             title: 'Estas Seguro?',
             text: "Quieres realizar la accion solicitada?",
@@ -54,7 +53,6 @@ function alertas_ajax(alerta){
         });
         
     }else if(alerta.tipo=="recargar"){
-
         Swal.fire({
             icon: alerta.icono,
             title: alerta.titulo,
@@ -66,7 +64,6 @@ function alertas_ajax(alerta){
             }
           });
     }else if(alerta.tipo=="limpiar"){
-
         Swal.fire({
             icon: alerta.icono,
             title: alerta.titulo,
@@ -79,6 +76,5 @@ function alertas_ajax(alerta){
           });
     }else if(alerta.tipo=="redireccionar"){
         window.location.href=alerta.url;
-
     }
 };
