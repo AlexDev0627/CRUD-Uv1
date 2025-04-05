@@ -72,6 +72,58 @@
                 return json_encode($alerta);
                 exit();
             }
+            # Verificando Email #
+            if($email!=""){
+                if(filter_var($email,FILTER_VALIDATE_EMAIL)){
+                    $check_email=$this->ejecutarConsulta("SELECT usuario_email FROM usuario WHERE usuario_email='$email'");
+                    if($check_email->rowCount()>0){
+                        $alerta=[
+                            "tipo"=>"simple",
+                            "titulo"=>"Ocurrio un error inesperado",
+                            "texto"=>"El CORREO ELECTRONICO que acaba de ingresar ya existe!",
+                            "icono"=>"error"
+                        ];
+                        return json_encode($alerta);
+                        exit();
+                    }
+                }else{
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"Ocurrio un error inesperado",
+                        "texto"=>"Ha ingresado un CORREO ELECTRONICO no valido",
+                        "icono"=>"error"
+                    ];
+                    return json_encode($alerta);
+                    exit();
+
+                }
+            }
+            if($clave1!=$clave2){
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"Las CLAVES no coinciden",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }else{
+                $clave=password_hash($clave1,PASSWORD_BCRYPT,["cost"=>10]);
+            }
+            # Verficando usuario #
+            $check_usuario=$this->ejecutarConsulta("SELECT usuario_usuario FROM usuario WHERE usuario_usuario='$usuario'");
+            if($check_usuario->rowCount()>0){
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"El USUARIO que acaba de ingresar ya existe!",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }
+            # Directorio de imagenes #
+            $img_dir="../views/fotos/";
         }
         
     }
