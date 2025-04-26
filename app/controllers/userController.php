@@ -382,6 +382,59 @@
             }
             return $tabla;
         }
+        
+        # Programando controlador para eliminar un usuario
+            public function eliminarUsuarioControlador(){
+                $id=$this->limpiarCadena($_POST['usuario_id']);
+
+                if($id==1){
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"OCURRIO UN ERROR INESPERADO",
+                        "texto"=>"No podemos eliminar el usuario principal del sistema",
+                        "icono"=>"error"
+                    ];
+                
+                return json_encode($alerta);
+                exit();
+                }
+                # Verificando usuario #
+                $datos=$this->ejecutarConsulta("SELECT * FROM usuario WHERE usuario_id='$id'");
+                if($datos->rowCount()<=0){
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"OCURRIO UN ERROR INESPERADO",
+                        "texto"=>"No hemos encontrado el usuario en el sistema",
+                        "icono"=>"error"
+                    ];
+                }else{
+                    $datos=$datos->fetch();
+                }
+                $eliminarUsuario=$this->eliminarRegistro("usuario","usuario_id",$id);
+                if($eliminarUsuario->rowCount()==1){
+                    if(is_file("../views/fotos/".$datos[' usuario_foto'])){
+                        chmod("../views/fotos/".$datos[' usuario_foto'],0777);
+                        unlink("../views/fotos/".$datos[' usuario_foto']);
+                    }
+                    $alerta=[
+                        "tipo"=>"recargar",
+                        "titulo"=>"PACIENTE ELIMINADO",
+                        "texto"=>"El PACIENTE ".$datos['usuario_nombre']."".$datos['usuario_apellido']."Se elimino Correctamente",
+                        "icono"=>"success"
+                    ];
+                    return json_encode($alerta);
+                    return $alerta;
+                    
+                }else{
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"OCURRIO UN ERROR INESPERADO",
+                        "texto"=>"No se PUDO ELIMINAR EL PACIENTE".$datos['usuario_nombre']."".$datos['usuario_apellido']." CORRECTAMENTE",
+                        "icono"=>"error"
+                    ];
+                }
+                return json_encode($alerta);
+            }
 
     }
 
