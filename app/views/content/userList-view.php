@@ -5,20 +5,7 @@
 <div class="container pb-6 pt-6">
 
 
-	<div class="table-container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-                <tr>
-                    <th class="has-text-centered">#</th>
-                    <th class="has-text-centered">Nombre</th>
-                    <th class="has-text-centered">Usuario</th>
-                    <th class="has-text-centered">Email</th>
-                    <th class="has-text-centered">Creado</th>
-                    <th class="has-text-centered">Actualizado</th>
-                    <th class="has-text-centered" colspan="3">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
+	
     
 				<tr class="has-text-centered">
 					<td>1</td>
@@ -58,9 +45,7 @@
 	                </td>
 	            </tr>
 			
-			</tbody>
-		</table>
-	</div>
+		
 
 	<p class="has-text-right">Mostrando usuarios <strong>1</strong> al <strong>7</strong> de un <strong>total de 7</strong></p>
 
