@@ -376,7 +376,7 @@
             	</tbody></table></div>';
                 if($total>=1 && $pagina<=$numeroPaginas){
                     $tabla.='
-	<p class="has-text-right">Mostrando usuarios <strong>1'.$pag_inicio.'</strong> al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>
+	<p class="has-text-right">Mostrando usuarios <strong>'.$pag_inicio.'</strong> al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>
                     ';    
                 $tabla.=$this->paginadorTablas($pagina,$numeroPaginas,$url,8);            
             }
