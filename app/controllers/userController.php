@@ -122,6 +122,10 @@
                 return json_encode($alerta);
                 exit();
             }
+           
+           
+           
+           
             # Directorio de imagenes #
             $img_dir="../views/fotos/";
 
@@ -261,6 +265,42 @@
             return json_encode($alerta);
         }
         
+        # Controlador para listar usuarios #          
+        public function listarUsuarioControlador($pagina,$registros,$url,$busqueda){
+            
+            $pagina=$this->limpiarCadena($pagina);
+            $registros=$this->limpiarCadena($registros);
+            
+            $url=$this->limpiarCadena($url);
+            $url=APP_URL.$url.'/';
+
+            $busqueda=$this->limpiarCadena($busqueda);
+            $tabla="";
+            
+            $pagina= (isset($pagina) && $pagina>0) ?(int) $pagina :1 ;
+            $inicio = ($pagina>0) ? (($pagina*$registros)-$registros) :0 ;
+
+            if(isset($busqueda) && $busqueda!=""){
+
+                
+                $consulta_datos="SELECT * FROM usuario WHERE ((usuario_id!='".$_SESSION['id']."' AND usuario_id!='1') AND (usuario_nombre LIKE '%$busqueda%'  OR usuario_email LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%')) ORDER BY usuario_nombre ASC LIMIT $inicio,$registros";
+
+                $consulta_total="SELECT COUNT(usuario_id) FROM usuario WHERE ((usuario_id!='".$_SESSION['id']."' AND usuario_id!='1') AND (usuario_nombre LIKE '%$busqueda%'  OR usuario_email LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%'))";
+            
+            }else{
+
+                $consulta_datos="SELECT * FROM usuario WHERE usuario_id!='".$_SESSION['id']."' AND usuario_id!='1' ORDER BY usuario_nombre ASC LIMIT $inicio,$registros";
+
+                $consulta_total="SELECT COUNT(usuario_id) FROM usuario WHERE usuario_id!='".$_SESSION['id']."' AND usuario_id!='1'";
+            }
+            $datos = $this->ejecutarConsulta($consulta_datos);
+            $datos = $datos->fetchAll();
+
+            $total = $this->ejecutarConsulta($consulta_total);
+            $total = (int) $total->fetchColumn();
+
+            $numeroPaginas =ceil($total/$registros);
+        }
     }
 
 
