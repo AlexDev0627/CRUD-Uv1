@@ -394,7 +394,6 @@
                         "texto"=>"No podemos eliminar el usuario principal del sistema",
                         "icono"=>"error"
                     ];
-                
                 return json_encode($alerta);
                 exit();
                 }
@@ -407,10 +406,13 @@
                         "texto"=>"No hemos encontrado el usuario en el sistema",
                         "icono"=>"error"
                     ];
+                    return json_encode($alerta);
+                    exit();
                 }else{
                     $datos=$datos->fetch();
                 }
                 $eliminarUsuario=$this->eliminarRegistro("usuario","usuario_id",$id);
+                
                 if($eliminarUsuario->rowCount()==1){
                     if(is_file("../views/fotos/".$datos[' usuario_foto'])){
                         chmod("../views/fotos/".$datos[' usuario_foto'],0777);
@@ -422,8 +424,6 @@
                         "texto"=>"El PACIENTE ".$datos['usuario_nombre']."".$datos['usuario_apellido']."Se elimino Correctamente",
                         "icono"=>"success"
                     ];
-                    return json_encode($alerta);
-                    return $alerta;
                     
                 }else{
                     $alerta=[
