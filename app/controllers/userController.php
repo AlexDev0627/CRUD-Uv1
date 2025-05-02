@@ -414,9 +414,9 @@
                 $eliminarUsuario=$this->eliminarRegistro("usuario","usuario_id",$id);
                 
                 if($eliminarUsuario->rowCount()==1){
-                    if(is_file("../views/fotos/".$datos[' usuario_foto'])){
-                        chmod("../views/fotos/".$datos[' usuario_foto'],0777);
-                        unlink("../views/fotos/".$datos[' usuario_foto']);
+                    if(is_file("../views/fotos/".$datos['usuario_foto'])){
+                        chmod("../views/fotos/".$datos['usuario_foto'],0777);
+                        unlink("../views/fotos/".$datos['usuario_foto']);
                     }
                     $alerta=[
                         "tipo"=>"recargar",
@@ -434,6 +434,7 @@
                     ];
                 }
                 return json_encode($alerta);
+            
             }
 
     }
