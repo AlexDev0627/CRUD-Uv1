@@ -78,20 +78,19 @@
 
         public function seleccionarDatos($tipo,$tabla,$campo,$id){
             $tipo=$this->limpiarCadena($tipo);
-            $tipo=$this->limpiarCadena($tabla);
-            $tipo=$this->limpiarCadena($campo);
-            $tipo=$this->limpiarCadena($id);
+            $tabla=$this->limpiarCadena($tabla);
+            $campo=$this->limpiarCadena($campo);
+            $id=$this->limpiarCadena($id);
 
+            $sql=null;
             if($tipo=="Unico"){
-            $sql=$this->conectar()->prepare("SELECT * FROM $tabla WHERE $campo=:ID");            
-            $sql->bindParam(":ID", $id);
-            
-
+                 $sql=$this->conectar()->prepare("SELECT * FROM $tabla WHERE $campo=:ID");            
+                 $sql->bindParam(":ID", $id);
             }elseif($tipo=="Normal"){
-            $sql=$this->conectar()->prepare("SELECT $campo FROM $tabla");            
-            
+                 $sql=$this->conectar()->prepare("SELECT $campo FROM $tabla");            
             }
             $sql->execute();
+            
             return $sql;
         }
 
