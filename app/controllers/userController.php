@@ -330,9 +330,6 @@
 					<td>'.$rows['usuario_email'].'</td>
 					<td>'.date("d-m-Y h:i:s A",strtotime($rows['usuario_creado'])).'</td>
 					<td>'.date("d-m-Y h:i:s A",strtotime($rows['usuario_actualizado'])).'</td>
-					<td>
-	                    <a href="'.APP_URL.'userPhoto/'.$rows['usuario_id'].'/" class="button is-info is-rounded is-small">Foto</a>
-	                </td>
 	                <td>
 	                    <a href="'.APP_URL.'userUpdate/'.$rows['usuario_id'].'/" class="button is-success is-rounded is-small">Actualizar</a>
 	                </td>
@@ -515,7 +512,193 @@
                    return json_encode($alerta);
                    exit();
            }
+             # Almacenando datos #
+            $nombre=$this->limpiarCadena($_POST['usuario_nombre']);
+            $apellido=$this->limpiarCadena($_POST['usuario_apellido']);
+            
+            $usuario=$this->limpiarCadena($_POST['usuario_usuario']);
+            $email=$this->limpiarCadena($_POST['usuario_email']);
+            $clave1=$this->limpiarCadena($_POST['usuario_clave_1']);
+            $clave2=$this->limpiarCadena($_POST['usuario_clave_2']);
 
+            # Verificando campos obligatorios #
+            if($nombre=="" || $apellido=="" || $usuario=="" ){
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"No has llenado todos los campos son obligatorios",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }
+            
+            # Verificar la integridad de los datos #
+            if($this->verificarDatos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$nombre)){
+
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"El nombre no coincide con el formato solicitado",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }
+            if($this->verificarDatos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}",$apellido)){
+
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"El apellido no coincide con el formato solicitado",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }
+            if($this->verificarDatos("[a-zA-Z0-9]{4,20}",$usuario)){
+
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"El usuario no coincide con el formato solicitado",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }
+         
+            # Verificando Email #
+            if($email!="" && $datos['usuario_email']){
+                if(filter_var($email,FILTER_VALIDATE_EMAIL)){
+                    $check_email=$this->ejecutarConsulta("SELECT usuario_email FROM usuario WHERE usuario_email='$email'");
+                    if($check_email->rowCount()>0){
+                        $alerta=[
+                            "tipo"=>"simple",
+                            "titulo"=>"Ocurrio un error inesperado",
+                            "texto"=>"El CORREO ELECTRONICO que acaba de ingresar ya existe!",
+                            "icono"=>"error"
+                        ];
+                        return json_encode($alerta);
+                        exit();
+                    }
+                }else{
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"Ocurrio un error inesperado",
+                        "texto"=>"Ha ingresado un CORREO ELECTRONICO no valido",
+                        "icono"=>"error"
+                    ];
+                    return json_encode($alerta);
+                    exit();
+
+                }
+            }
+            # Verificando Claves #
+            if($clave1!="" || $clave2!=""){
+                   
+                if($this->verificarDatos("[a-zA-Z0-9$@.-]{7,100}",$clave1)|| $this->verificarDatos("[a-zA-Z0-9$@.-]{7,100}",$clave2)){
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"Ocurrio un error inesperado",
+                    "texto"=>"Las CLAVES no coinciden",
+                    "icono"=>"error"
+                ];
+                return json_encode($alerta);
+                exit();
+            }else{
+                if($clave1!= $clave2){
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"Ocurrio un error inesperado",
+                        "texto"=>"Las CLAVES no coinciden",
+                        "icono"=>"error"
+                    ];
+                    return json_encode($alerta);
+                    exit();
+                }else{
+                    $clave=password_hash($clave1,PASSWORD_BCRYPT,["cost"=>10]);
+                }
+            }
+            }else{
+                $clave=$datos['usuario_clave'];
+            }
+            
+            # Verficando usuario #
+            if($datos['usuario_usuario'] != $usuario){
+                $check_usuario=$this->ejecutarConsulta("SELECT usuario_usuario FROM usuario WHERE usuario_usuario='$usuario'");
+                if($check_usuario->rowCount()>0){
+                    $alerta=[
+                        "tipo"=>"simple",
+                        "titulo"=>"Ocurrio un error inesperado",
+                        "texto"=>"El USUARIO que acaba de ingresar ya existe!",
+                        "icono"=>"error"
+                    ];
+                    return json_encode($alerta);
+                    exit();
+                }
+            }
+               $usuario_datos_up=[
+                [
+                    "campo_nombre"=>"usuario_nombre",
+                    "campo_marcador"=>":Nombre",
+                    "campo_valor"=>$nombre,
+                ],
+                [
+                    "campo_nombre"=>"usuario_apellido",
+                    "campo_marcador"=>":Apellido",
+                    "campo_valor"=>$apellido,
+                ],
+                [
+                    "campo_nombre"=>"usuario_email",
+                    "campo_marcador"=>":Email",
+                    "campo_valor"=>$email,
+                ],
+                [
+                    "campo_nombre"=>"usuario_usuario",
+                    "campo_marcador"=>":Usuario",
+                    "campo_valor"=>$usuario,
+                ],
+                [
+                    "campo_nombre"=>"usuario_clave",
+                    "campo_marcador"=>":Clave",
+                    "campo_valor"=>$clave,
+                ],
+                [
+                    "campo_nombre"=>"usuario_actualizado",
+                    "campo_marcador"=>":Actualizado",
+                    "campo_valor"=>date("Y-m-d H:i:s"),
+                ],
+            ];
+            $condicion=[
+                    "condicion_campo"=>"usuario_id",
+                    "condicion_marcador"=>":ID",
+                    "condicion_valor"=>$id,
+                
+            ];
+
+             if($this->actualizarDatos("usuario",$usuario_datos_up,$condicion)){
+
+                if($id==$_SESSION['id']){
+                    $_SESSION['nombre']=$nombre;
+                    $_SESSION['apellido']=$apellido;
+                    $_SESSION['usuario']=$usuario;
+                }
+                $alerta=[
+                    "tipo"=>"limpiar",
+                    "titulo"=>"PACIENTE REGISTRADO",
+                    "texto"=>"El PACIENTE ".$datos['usuario_nombre']." ".$datos['usuario_apellido']." ha sido ACTUALIZADO CORRECTAMENTE",
+                    "icono"=>"success"
+                ];
+            }else{
+                $alerta=[
+                    "tipo"=>"simple",
+                    "titulo"=>"ERROR AL MOVER LA IMAGEN",
+                    "texto"=>"No se pudo ACTUALIZAR el PACIENTE, por favor intente nuevamente",
+                    "icono"=>"error"
+                ];
+            }
+            return json_encode($alerta);
         }
     }
 

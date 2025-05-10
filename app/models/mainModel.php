@@ -112,7 +112,7 @@
 
             }
 
-            $sql->bindParam($condicion["condicion_marcador"],$clave["condicion_valor"]);
+            $sql->bindParam($condicion["condicion_marcador"],$condicion["condicion_valor"]);
 
             $sql->execute();
             return $sql;
