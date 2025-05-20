@@ -668,6 +668,7 @@
                     "campo_nombre"=>"usuario_actualizado",
                     "campo_marcador"=>":Actualizado",
                     "campo_valor"=>date("Y-m-d H:i:s"),
+                
                 ],
             ];
             $condicion=[
