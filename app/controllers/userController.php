@@ -389,12 +389,18 @@
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr>
-                    <th class="has-text-centered">#</th>
+                    <th class="has-text-centered">Id</th>
                     <th class="has-text-centered">Nombre</th>
-                    <th class="has-text-centered">Usuario</th>
+                    <th class="has-text-centered">Apellido</th>
+                    <th class="has-text-centered">Cedula</th>
                     <th class="has-text-centered">Email</th>
-                    <th class="has-text-centered">Creado</th>
-                    <th class="has-text-centered">Actualizado</th>
+                    <th class="has-text-centered">Telefono</th>
+                    <th class="has-text-centered">Edad</th>
+                    <th class="has-text-centered">Genero</th>
+                    <th class="has-text-centered">Sintomas</th>
+
+                    <th class="has-text-centered">Fecha de Registro</th>
+                   
                     <th class="has-text-centered" colspan="3">Opciones</th>
                 </tr>
             </thead>
@@ -408,11 +414,17 @@
                     $tabla.='
 				<tr class="has-text-centered">
 					<td>'.$contador.'</td>
-					<td>'.$rows['usuario_nombre'].''.$rows['usuario_apellido'].'</td>
-					<td>'.$rows['usuario_usuario'].'</td>
+					<td>'.$rows['usuario_nombre'].'</td>
+					<td>'.$rows['usuario_apellido'].'</td>
+					<td>'.$rows['cedula'].'</td>
 					<td>'.$rows['usuario_email'].'</td>
-					<td>'.date("d-m-Y h:i:s A",strtotime($rows['usuario_creado'])).'</td>
-					<td>'.date("d-m-Y h:i:s A",strtotime($rows['usuario_actualizado'])).'</td>
+					<td>'.$rows['telefono'].'</td>
+					<td>'.$rows['edad'].'</td>
+					<td>'.$rows['genero'].'</td>
+					<td>'.$rows['sintomas'].'</td>
+
+
+					<td>'.date("d-m-Y h:i:s A",strtotime($rows['usuario_creado'])).'</td>					
 	                <td>
 	                    <a href="'.APP_URL.'userUpdate/'.$rows['usuario_id'].'/" class="button is-success is-rounded is-small">Actualizar</a>
 	                </td>

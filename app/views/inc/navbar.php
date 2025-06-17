@@ -20,18 +20,18 @@
 
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link" href="#">
-                    Usuarios
+                    Agregar Paciente
                 </a>
                 <div class="navbar-dropdown is-boxed">
 
                     <a class="navbar-item" href="<?php echo APP_URL; ?>userNew/">
-                        Nuevo
+                        Nuevo Paciente
                     </a>
                     <a class="navbar-item" href="<?php echo APP_URL; ?>userList/">
-                        Lista
+                        Listado De Pacientes
                     </a>
                     <a class="navbar-item" href="<?php echo APP_URL; ?>userSearch/">
-                        Buscar
+                        Buscar Pacientes
                     </a>
 
                 </div>
@@ -48,9 +48,9 @@
                     <a class="navbar-item" href="<?php echo APP_URL."userUpdate/".$_SESSION['id']."/"; ?>">
                         Mi cuenta
                     </a>
-                    <a class="navbar-item" href="<?php echo APP_URL."userPhoto/".$_SESSION['id']."/"; ?>">
+                    <!-- <a class="navbar-item" href="<?php echo APP_URL."userPhoto/".$_SESSION['id']."/"; ?>">
                         Mi foto
-                    </a>
+                    </a> -->
                     <hr class="navbar-divider">
                     <a class="navbar-item" href="<?php echo APP_URL; ?>logOut/" id="btn_exit" >
                         Salir
