@@ -81,13 +81,13 @@
         </div>
         <!-- Fin de nuevos campos médicos -->
 
-        <div class="columns">
+        <!-- <div class="columns">
             <div class="column">
                 <div class="control">
                     <label>Usuario</label>
                     <input class="input" type="text" name="usuario_usuario" pattern="[a-zA-Z0-9]{4,20}" maxlength="20" required >
                 </div>
-            </div>
+            </div> -->
             <div class="column">
                 <div class="control">
                     <label>Email</label>
@@ -96,7 +96,7 @@
             </div>
         </div>
         
-        <div class="columns">
+        <!-- <div class="columns">
             <div class="column">
                 <div class="control">
                     <label>Clave</label>
@@ -109,7 +109,7 @@
                     <input class="input" type="password" name="usuario_clave_2" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required >
                 </div>
             </div>
-        </div>
+        </div> -->
         
         <!-- <div class="columns">
             <div class="column">
