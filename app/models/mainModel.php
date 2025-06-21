@@ -22,7 +22,7 @@
             $sql->execute();
             return $sql;
         }
-
+        
 
         public function limpiarCadena($cadena){
             

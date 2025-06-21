@@ -907,5 +907,4 @@
         return json_encode($alerta);
 
         }
-
     }

@@ -1,135 +1,133 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Usuarios</h1>
-    <h2 class="subtitle">Nuevo usuario</h2>
+    <h1 class="title has-text-centered">Registro de Usuario</h1>
+    <!-- <h2 class="subtitle has-text-centered has-text-danger">Nuevo usuario</h2> -->
 </div>
 
 <div class="container pb-6 pt-6">
-
-    <form class="FormularioAjax" action="<?php echo APP_URL?>app/ajax/usuarioAjax.php" method="POST" autocomplete="off" enctype="multipart/form-data" >
-
+    <form class="FormularioAjax" action="<?php echo APP_URL?>app/ajax/usuarioAjax.php" method="POST" autocomplete="off" enctype="multipart/form-data">
         <input type="hidden" name="modulo_usuario" value="registrar">
 
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Nombres</label>
-                    <input class="input" type="text" name="usuario_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
+        <!-- Sección 1: Información Personal -->
+        <div class="box mb-5">
+            <h3 class="title is-4 has-text-info">Información Personal</h3>
+            <div class="columns is-multiline">
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Nombres</label>
+                        <div class="control">
+                            <input class="input" type="text" name="usuario_nombre" 
+                                   pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required
+                                   placeholder="Ingrese los nombres">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="control">
-                    <label>Apellidos</label>
-                    <input class="input" type="text" name="usuario_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Apellidos</label>
+                        <div class="control">
+                            <input class="input" type="text" name="usuario_apellido" 
+                                   pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required
+                                   placeholder="Ingrese los apellidos">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Nuevos campos médicos añadidos aquí -->
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Cédula</label>
-                    <input class="input" type="text" name="cedula" pattern="[0-9]{6,20}" maxlength="20" required >
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Género</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select name="genero" required>
+                                    <option value="" disabled selected>Seleccione una opción</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="control">
-                    <label>Teléfono</label>
-                    <input class="input" type="tel" name="telefono" pattern="[0-9+]{7,15}" maxlength="15" >
-                </div>
-            </div>
-        </div>
-        
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Dirección</label>
-                    <input class="input" type="text" name="direccion" maxlength="200" >
-                </div>
-            </div>
-            <div class="column">
-                <div class="control">
-                    <label>Edad</label>
-                    <input class="input" type="number" name="edad" min="1" max="120" >
-                </div>
-            </div>
-        </div>
-        
-        <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Género</label>
-                    <div class="select is-fullwidth">
-                        <select name="genero" required>
-                            <option value="" selected disabled>Seleccione...</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
-                        </select>
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Edad</label>
+                        <div class="control">
+                            <input class="input" type="number" name="edad" 
+                                   min="1" max="120" placeholder="Ej: 30">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="column">
-                <div class="columns">
-    	<div class="column">
-        	<div class="control">
-            	<label>Síntomas</label>
-            	<textarea class="textarea" name="sintomas" rows="3" placeholder="Describa los síntomas del paciente"></textarea>
-       	 </div>
-    	</div>
-</div>
-            </div>
         </div>
-        <!-- Fin de nuevos campos médicos -->
 
-        <!-- <div class="columns">
-            <div class="column">
-                <div class="control">
-                    <label>Usuario</label>
-                    <input class="input" type="text" name="usuario_usuario" pattern="[a-zA-Z0-9]{4,20}" maxlength="20" required >
+        <!-- Sección 2: Datos de Contacto -->
+        <div class="box mb-5">
+            <h3 class="title is-4 has-text-info">Datos de Contacto</h3>
+            <div class="columns is-multiline">
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Cédula</label>
+                        <div class="control">
+                            <input class="input" type="text" name="cedula" 
+                                   pattern="[0-9]{6,20}" maxlength="20" required
+                                   placeholder="Número de cédula">
+                        </div>
+                    </div>
                 </div>
-            </div> -->
-            <div class="column">
-                <div class="control">
-                    <label>Email</label>
-                    <input class="input" type="email" name="usuario_email" maxlength="70" >
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Teléfono</label>
+                        <div class="control">
+                            <input class="input" type="tel" name="telefono" 
+                                   pattern="[0-9+]{7,15}" maxlength="15" 
+                                   placeholder="0412555555">
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="email" name="usuario_email" 
+                                   maxlength="70" placeholder="correo@ejemplo.com">
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Dirección</label>
+                        <div class="control">
+                            <input class="input" type="text" name="direccion" 
+                                   maxlength="200" placeholder="Dirección completa">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- <div class="columns">
-            <div class="column">
+
+        <!-- Sección 3: Información Médica -->
+        <div class="box mb-5">
+            <h3 class="title is-4 has-text-info">Información Médica</h3>
+            <div class="field">
+                <label class="label">Síntomas</label>
                 <div class="control">
-                    <label>Clave</label>
-                    <input class="input" type="password" name="usuario_clave_1" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required >
+                    <textarea class="textarea" name="sintomas" rows="3" 
+                              placeholder="Describa los síntomas del paciente"></textarea>
                 </div>
             </div>
-            <div class="column">
-                <div class="control">
-                    <label>Repetir clave</label>
-                    <input class="input" type="password" name="usuario_clave_2" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required >
-                </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="field is-grouped is-grouped-centered mt-6">
+            <div class="control">
+                <button type="reset" class="button is-link is-light is-rounded">
+                    <span class="icon"><i class="fas fa-eraser"></i></span>
+                    <span>Limpiar Formulario</span>
+                </button>
             </div>
-        </div> -->
-        
-        <!-- <div class="columns">
-            <div class="column">
-                <div class="file has-name is-boxed">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="usuario_foto" accept=".jpg, .png, .jpeg" >
-                        <span class="file-cta">
-                            <span class="file-label">
-                                Seleccione una foto
-                            </span>
-                        </span>
-                        <span class="file-name">JPG, JPEG, PNG. (MAX 5MB)</span>
-                    </label>
-                </div>
+            <div class="control">
+                <button type="submit" class="button is-info is-rounded">
+                    <span class="icon"><i class="fas fa-user-plus"></i></span>
+                    <span>Registrar Usuario</span>
+                </button>
             </div>
-        </div> -->
-        
-        <p class="has-text-centered">
-            <button type="reset" class="button is-link is-light is-rounded">Limpiar</button>
-            <button type="submit" class="button is-info is-rounded">Guardar</button>
-        </p>
+        </div>
     </form>
 </div>
