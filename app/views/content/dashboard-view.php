@@ -74,13 +74,14 @@
                         <span class="icon is-large has-text-info">
                             <i class="fas fa-calendar-plus fa-2x"></i>
                         </span>
-                        <p class="title is-6">Nueva Cita</p>
-                        <p class="subtitle is-7">Programar nueva cita</p>
-                        <a href="<?php echo APP_URL; ?>citas/nueva/" class="button is-info is-small">
+                        <p class="title is-6">Pacientes</p>
+                        <p class="subtitle is-7">Ver listado de pacientes</p>
+                        <!-- <a href="<?php echo APP_URL; ?>citas/nueva/" class="button is-info is-small"> -->
+                             <a href="<?php echo APP_URL; ?>userList/"  class="button is-info is-small">
                             <span class="icon">
                                 <i class="fas fa-calendar"></i>
                             </span>
-                            <span>Programar</span>
+                            <span>Listar</span>
                         </a>
                     </div>
                 </div>
@@ -95,11 +96,11 @@
                         </span>
                         <p class="title is-6">Buscar Paciente</p>
                         <p class="subtitle is-7">Encontrar información</p>
-                        <a href="<?php echo APP_URL; ?>userSearch/" class="button is-success is-small">
+                        <!-- <a href="<?php echo APP_URL; ?>userSearch/" class="button is-success is-small"> -->
                             <span class="icon">
                                 <i class="fas fa-search"></i>
                             </span>
-                            <span>Buscar</span>
+                            <span>Proximamente</span>
                         </a>
                     </div>
                 </div>
@@ -114,11 +115,11 @@
                         </span>
                         <p class="title is-6">Historial Médico</p>
                         <p class="subtitle is-7">Ver registros médicos</p>
-                        <a href="<?php echo APP_URL; ?>historial/" class="button is-warning is-small">
+                        <!-- <a href="<?php echo APP_URL; ?>historial/" class="button is-warning is-small"> -->
                             <span class="icon">
                                 <i class="fas fa-eye"></i>
                             </span>
-                            <span>Ver</span>
+                            <span>Proximamente</span>
                         </a>
                     </div>
                 </div>

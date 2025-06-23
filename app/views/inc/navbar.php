@@ -1,12 +1,12 @@
 <nav class="navbar is-primary is-fixed-top has-shadow">
     <div class="navbar-brand">
         <a class="navbar-item" href="<?php echo APP_URL; ?>dashboard/">
-            <img src="<?php echo APP_URL; ?>app/views/img/clinica-de-salud.png" alt="Clínica de Salud" style="max-height: 40px">
+            <img src="<?php echo APP_URL; ?>app/views/img/logoUniversidad.png" alt="Clínica de Salud" style="max-height: 100px">
         </a>
         <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+            <!-- <span></span>
             <span></span>
-            <span></span>
-            <span></span>
+            <span></span> -->
         </div>
     </div>
 
@@ -16,7 +16,7 @@
                 <span class="icon">
                     <i class="fas fa-home"></i>
                 </span>
-                <span>Dashboard</span>
+                <span>Ir a inicio</span>
             </a>
 
             <div class="navbar-item has-dropdown is-hoverable">
