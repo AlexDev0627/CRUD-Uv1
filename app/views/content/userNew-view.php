@@ -1,13 +1,13 @@
 <div class="container is-fluid mb-6">
     <h1 class="title has-text-centered">Registro de Usuario</h1>
-    <!-- <h2 class="subtitle has-text-centered has-text-danger">Nuevo usuario</h2> -->
+    
 </div>
 
 <div class="container pb-6 pt-6">
     <form class="FormularioAjax" action="<?php echo APP_URL?>app/ajax/usuarioAjax.php" method="POST" autocomplete="off" enctype="multipart/form-data">
         <input type="hidden" name="modulo_usuario" value="registrar">
 
-        <!-- Sección 1: Información Personal -->
+     
         <div class="box mb-5">
             <h3 class="title is-4 has-text-info">Información Personal</h3>
             <div class="columns is-multiline">
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <!-- Sección 2: Datos de Contacto -->
+     
         <div class="box mb-5">
             <h3 class="title is-4 has-text-info">Datos de Contacto</h3>
             <div class="columns is-multiline">
@@ -102,7 +102,7 @@
             </div>
         </div>
 
-        <!-- Sección 3: Información Médica -->
+   
         <div class="box mb-5">
             <h3 class="title is-4 has-text-info">Información Médica</h3>
             <div class="field">
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <!-- Botones de Acción -->
+     
         <div class="field is-grouped is-grouped-centered mt-6">
             <div class="control">
                 <button type="reset" class="button is-link is-light is-rounded">

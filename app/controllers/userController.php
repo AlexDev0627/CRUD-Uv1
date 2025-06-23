@@ -757,49 +757,6 @@
             }
         }
         
-        # Verificando Claves #
-        // if($clave1 != "" || $clave2 != ""){
-        //     if($this->verificarDatos("[a-zA-Z0-9$@.-]{7,100}", $clave1) || $this->verificarDatos("[a-zA-Z0-9$@.-]{7,100}", $clave2)){
-        //         $alerta = [
-        //             "tipo" => "simple",
-        //             "titulo" => "Ocurrio un error inesperado",
-        //             "texto" => "Las CLAVES no coinciden con el formato solicitado",
-        //             "icono" => "error"
-        //         ];
-        //         return json_encode($alerta);
-        //         exit();
-        //     } else {
-        //         if($clave1 != $clave2){
-        //             $alerta = [
-        //                 "tipo" => "simple",
-        //                 "titulo" => "Ocurrio un error inesperado",
-        //                 "texto" => "Las CLAVES no coinciden",
-        //                 "icono" => "error"
-        //             ];
-        //             return json_encode($alerta);
-        //             exit();
-        //         } else {
-        //             $clave = password_hash($clave1, PASSWORD_BCRYPT, ["cost" => 10]);
-        //         }
-        //     }
-        // } else {
-        //     $clave = $datos['usuario_clave'];
-        // }
-        
-        # Verificando usuario #
-        // if($datos['usuario_usuario'] != $usuario){
-        //     $check_usuario = $this->ejecutarConsulta("SELECT usuario_usuario FROM usuario WHERE usuario_usuario='$usuario'");
-        //     if($check_usuario->rowCount() > 0){
-        //         $alerta = [
-        //             "tipo" => "simple",
-        //             "titulo" => "Ocurrio un error inesperado",
-        //             "texto" => "El USUARIO que acaba de ingresar ya existe!",
-        //             "icono" => "error"
-        //         ];
-        //         return json_encode($alerta);
-        //         exit();
-        //     }
-        // }
         
         # Verificando cédula única #
         if($datos['cedula'] != $cedula){

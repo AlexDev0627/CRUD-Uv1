@@ -39,12 +39,12 @@
                         </span>
                         <span>Listado De Pacientes</span>
                     </a>
-                    <a class="navbar-item" href="<?php echo APP_URL; ?>userSearch/">
+                    <!-- <a class="navbar-item" href="<?php echo APP_URL; ?>userSearch/">
                         <span class="icon">
                             <i class="fas fa-search"></i>
                         </span>
                         <span>Buscar Pacientes</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>

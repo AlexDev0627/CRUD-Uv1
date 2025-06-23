@@ -1,7 +1,7 @@
 <div class="container is-fluid">
 	<h1 class="title">Home</h1>
   	
-  	<!-- Sección de perfil existente -->
+  	
   	<div class="columns is-flex is-justify-content-center">
     	<figure class="image is-128x128">
 			<?php
@@ -17,7 +17,7 @@
   		<h2 class="subtitle">¡Bienvenido <?php echo $_SESSION['nombre']." ". $_SESSION['apellido'] ?>!</h2>
   	</div>
 
-  	<!-- Nueva sección: Información del usuario -->
+  	
   	<div class="columns is-centered">
   		<div class="column is-8">
   			<div class="box">
@@ -36,7 +36,7 @@
   		</div>
   	</div>
 
-  	<!-- Nueva sección: Accesos rápidos -->
+ 
 <div class="columns is-centered">
     <div class="column is-10">
         <h3 class="title is-4">
@@ -48,7 +48,7 @@
             </span>
         </h3>
         <div class="columns">
-            <!-- Card 1 - Nuevo Paciente -->
+    
             <div class="column is-3">
                 <div class="card hover-card">
                     <div class="card-content has-text-centered">
@@ -67,7 +67,6 @@
                 </div>
             </div>
             
-            <!-- Card 2 - Nueva Cita -->
             <div class="column is-3">
                 <div class="card hover-card">
                     <div class="card-content has-text-centered">
@@ -87,7 +86,6 @@
                 </div>
             </div>
             
-            <!-- Card 3 - Buscar Paciente -->
             <div class="column is-3">
                 <div class="card hover-card">
                     <div class="card-content has-text-centered">
@@ -106,7 +104,6 @@
                 </div>
             </div>
             
-            <!-- Card 4 - Historial Médico -->
             <div class="column is-3">
                 <div class="card hover-card">
                     <div class="card-content has-text-centered">
@@ -129,7 +126,7 @@
 </div>
 
 <style>
-    /* Estilo para las cards con hover */
+    
     .hover-card {
         transition: all 0.3s ease;
         height: 100%;
@@ -140,7 +137,7 @@
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
     
-    /* Estilo para los botones */
+   
     .card-content .button {
         margin-top: 0.75rem;
         transition: all 0.2s ease;
@@ -150,7 +147,7 @@
         transform: scale(1.05);
     }
     
-    /* Asegurar altura uniforme */
+ 
     .columns {
         align-items: stretch;
     }
